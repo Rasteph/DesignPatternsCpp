@@ -73,11 +73,15 @@ public:
         DayAgendaGod():godDayAgenda(NULL){}
         ~DayAgendaGod() {if(godDayAgenda) delete godDayAgenda;}
 
+    // sets class variable godDayAgenda to the input concrete DayAgendaBuilder (HoliDayAgenda or BusyDayAgenda)
     void setDayAgendaBuilder(DayAgendaBuilder *dayAgendaBuilder){
         if(godDayAgenda) delete godDayAgenda;
         godDayAgenda = dayAgendaBuilder;
     }
+
+    // returns the concrete DayAgendaBuilder (HoliDayAgenda or BusyDayAgenda)
     const DayAgenda& getDayAgenda(){return godDayAgenda->getDayAgenda();}
+    // pushes agenda items one the DayAgenda queue
     void createDayAgenda(){
         godDayAgenda->buildMorning();
         godDayAgenda->buildLunch();
